@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>2024-08-28 Project</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+
+      .calculator {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 350px;
+        text-align: center;
+      }
+
+      .input-field {
+        width: 90%;
+        height: 40px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 0 10px;
+      }
+
+      .button {
+        padding: 10px;
+        width: 80px;
+        height: 60px;
+        font-size: 12px;
+        border: none;
+        border-radius: 4px;
+        margin: 5px;
+        cursor: pointer;
+        background-color: #ababab;
+        color: #fff;
+        transition: background-color 0.3s ease;
+      }
+
+      .button:hover {
+        background-color: #575757;
+      }
+
+      .button:active {
+        background-color: #525252;
+      }
+
+      .button-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+      }
+
+      .button-container .span3 {
+        grid-column: span 3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input
+        type="text"
+        id="text1"
+        class="input-field"
+        placeholder="첫번째 문자 입력"
+      />
+      <input
+        type="text"
+        id="text2"
+        class="input-field"
+        placeholder="두번뺴 문자 입력"
+      />
+      <div class="button-container">
+        <input
+          type="button"
+          value="연결"
+          onClick="concatenate()"
+          class="button"
+        />
+        <input
+          type="button"
+          value="첫번쨰 길이"
+          onClick="lengthOfText1()"
+          class="button"
+        />
+        <input
+          type="button"
+          value="두번째 길이2"
+          onClick="lengthOfText2()"
+          class="button"
+        />
+        <input
+          type="button"
+          value="대문자"
+          onClick="toUpperCase()"
+          class="button"
+        />
+        <input
+          type="button"
+          value="소문자"
+          onClick="toLowerCase()"
+          class="button"
+        />
+        <input
+          type="button"
+          value="문자 찾기"
+          onClick="findCharacter()"
+          class="button"
+        />
+      </div>
+    </div>
+
+    <script>
+      // 결과값 저장 변수
+      let result = '';
+
+      //문자열 + 문자열
+      function concatenate() {
+        const text1 = document.getElementById('text1').value; //입력 필드의 값 가져오기
+        const text2 = document.getElementById('text2').value;
+        result = text1 + text2; // 두 문자열을 연결
+        showResult();
+      }
+
+      // 첫 번째 입력 필드의 문자열 길이를 계산하여 결과를 저장하는 함수
+      function lengthOfText1() {
+        const text1 = document.getElementById('text1').value;
+        result = text1.length; // 문자열 길이 계산
+        showResult();
+      }
+
+      //두 번째 입력 필드의 문자열 길이를 계산하여 결과를 저장하는 함수
+      function lengthOfText2() {
+        const text2 = document.getElementById('text2').value;
+        result = text2.length;
+        showResult();
+      }
+
+      //첫 번째 입력 필드의 문자열을 대문자로 변환하여 결과를 저장하는 함수
+      function toUpperCase() {
+        const text1 = document.getElementById('text1').value;
+        result = text1.toUpperCase(); // 문자열 대문자로 변환
+        showResult();
+      }
+
+      // 첫 번째 입력 필드의 문자열을 소문자로 변환하여 결과를 저장하는 함수
+      function toLowerCase() {
+        const text1 = document.getElementById('text1').value;
+        result = text1.toLowerCase(); // 문자열 소문자로 변환
+        showResult();
+      }
+
+      // 첫 번째 입력 필드에서 두 번째 입력 필드의 문자열을 찾는 함수임
+      function findCharacter() {
+        const text1 = document.getElementById('text1').value;
+        const text2 = document.getElementById('text2').value;
+        // 두 번째 문자열이 첫 번째 문자열에 포함되어 있는지 확인
+        result = text1.includes(text2) ? '찾았다!' : '찾을 수 없음';
+        showResult();
+      }
+
+      function showResult() {
+        // 결과값 표시
+        document.getElementById('text1').value = result;
+      }
+    </script>
+  </body>
+</html>
